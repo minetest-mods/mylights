@@ -26,7 +26,7 @@ minetest.register_node("mylights:lightbox30_"..colour, {
 	drawtype = "nodebox",
 	paramtype = "light",
 	light_source = 5,
-	groups = {cracky = 2},
+	groups = {cracky = 2, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -50,15 +50,6 @@ minetest.register_node("mylights:lightbox30_"..colour, {
 		fixed = {-0.5,-0.5,-0.5,0.5,0.5,0.5}},
 })
 
---Craft
-minetest.register_craft({
-	output = "mylights:lightbox30_"..colour,
-	recipe = {
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-		{"wool:"..colour.."","mylights:lightbulb30","wool:"..colour..""},
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-	}
-})
 
 minetest.register_node("mylights:lightbox60_"..colour, {
 	description = "60 Watt "..lightdesc,
@@ -73,7 +64,7 @@ minetest.register_node("mylights:lightbox60_"..colour, {
 	drawtype = "nodebox",
 	paramtype = "light",
 	light_source = 8,
-	groups = {cracky = 2},
+	groups = {cracky = 2, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -97,15 +88,6 @@ minetest.register_node("mylights:lightbox60_"..colour, {
 		fixed = {-0.5,-0.5,-0.5,0.5,0.5,0.5}},
 })
 
---Craft
-minetest.register_craft({
-	output = "mylights:lightbox60_"..colour,
-	recipe = {
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-		{"wool:"..colour.."","mylights:lightbulb60","wool:"..colour..""},
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-	}
-})
 
 minetest.register_node("mylights:lightbox90_"..colour, {
 	description = "90 Watt "..lightdesc,
@@ -120,7 +102,7 @@ minetest.register_node("mylights:lightbox90_"..colour, {
 	drawtype = "nodebox",
 	paramtype = "light",
 	light_source = 11,
-	groups = {cracky = 2},
+	groups = {cracky = 2, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -145,14 +127,7 @@ minetest.register_node("mylights:lightbox90_"..colour, {
 })
 
 --Craft
-minetest.register_craft({
-	output = "mylights:lightbox90_"..colour,
-	recipe = {
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-		{"wool:"..colour.."","mylights:lightbulb90","wool:"..colour..""},
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-	}
-})
+
 
 minetest.register_node("mylights:lightbox120_"..colour, {
 	description = "120 Watt "..lightdesc,
@@ -167,7 +142,7 @@ minetest.register_node("mylights:lightbox120_"..colour, {
 	drawtype = "nodebox",
 	paramtype = "light",
 	light_source = 14,
-	groups = {cracky = 2},
+	groups = {cracky = 2, not_in_creative_inventory=1},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -191,15 +166,6 @@ minetest.register_node("mylights:lightbox120_"..colour, {
 		fixed = {-0.5,-0.5,-0.5,0.5,0.5,0.5}},
 })
 
---Craft
-minetest.register_craft({
-	output = "mylights:lightbox120_"..colour,
-	recipe = {
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-		{"wool:"..colour.."","mylights:lightbulb120","wool:"..colour..""},
-		{"default:obsidian_shard","wool:"..colour.."","default:obsidian_shard"},
-	}
-})
 end
 
 

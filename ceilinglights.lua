@@ -14,6 +14,7 @@ minetest.register_node("mylights:ceiling_light_"..color, {
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	light_source = 14,
 	groups = {snappy = 1},
 	node_box = {
@@ -30,6 +31,7 @@ minetest.register_node("mylights:ceiling_light_lg_"..color, {
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
+	paramtype2 = "facedir",
 	light_source = 14,
 	groups = {snappy = 1},
 	node_box = {

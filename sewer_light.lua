@@ -16,14 +16,4 @@ minetest.register_node("mylights:sewer_light", {
 	},
 
 })
---[[
---Craft
-minetest.register_craft({
-	output = "bat_light:sewer_light 9",
-	recipe = {
-		{'', 'bat_blocks:bat_color_yellow', ''},
-		{'', 'default:torch', ''},
-		{'', '', ''}
-	}
-})
---]]
+

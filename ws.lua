@@ -15,7 +15,7 @@ minetest.register_node("mylights:ws", {
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	group = {snappy = 1},
+	groups = {cracky=1,snappy = 1,oddly_breakable_by_hand=1},
 	light_source = 11,
 	node_box = {
 		type = "fixed",
