@@ -1,5 +1,7 @@
-local material = {}
-local make_ok = {}
+local cubelight = {}
+local lightbox = {}
+local makebox_ok = {}
+local makecube_ok = {}
 local anzahl = {}
 local lbanzahl = {}
 minetest.register_node("mylights:machine_cubes", {
@@ -58,15 +60,15 @@ on_construct = function(pos)
 		"list[current_name;ingot2;2,2;1,1;]"..
 		"label[3,3;Obsidian]"..
 		"list[current_name;ingot3;2,3;1,1;]"..
-		"list[current_name;res1;2,4.5;1,1;]"..
-		"button[1,4.5;1,1;make;Make]"..
+		"list[current_name;boxout;2,4.5;1,1;]"..
+		"button[1,4.5;1,1;makebox;Make]"..
 
 		"label[5,1;Wool]"..
 		"list[current_name;ingot4;6,1;1,1;]"..
 		"label[4.5,2;Light Bulb]"..
 		"list[current_name;ingot5;6,2;1,1;]"..
-		"list[current_name;res2;6,4.5;1,1;]"..
-		"button[5,4.5;1,1;make2;Make]"..
+		"list[current_name;cubeout;6,4.5;1,1;]"..
+		"button[5,4.5;1,1;makecube;Make]"..
 
 
 		"list[current_player;main;0.5,6;8,4;]")
@@ -77,34 +79,28 @@ on_construct = function(pos)
 	inv:set_size("ingot3", 1)
 	inv:set_size("ingot4", 1)
 	inv:set_size("ingot5", 1)
-	inv:set_size("res1", 1)
-	inv:set_size("res2", 1)
+	inv:set_size("boxout", 1)
+	inv:set_size("cubeout", 1)
 end,
 
 on_receive_fields = function(pos, formname, fields, sender)
 	local meta = minetest.env:get_meta(pos)
 	local inv = meta:get_inventory()
 
-if fields["make"] or fields["make2"] 
+if fields["makebox"] 
 then
 
-	if fields["make"] then
-		make_ok = "0"
+	if fields["makebox"] then
+		makebox_ok = "0"
+		makecube_ok = "0"
 		anzahl = "1"
-		if inv:is_empty("ingot1") then
+		if inv:is_empty("ingot1") or
+		 inv:is_empty("ingot2") or
+		 inv:is_empty("ingot3") then
 			return
 		end
 	end
 
-
-	if fields["make2"] then
-		make_ok = "0"
-		lbanzahl = "1"
-		if inv:is_empty("ingot4") or
-		   inv:is_empty("ingot5") then
-			return
-		end
-	end
 
 
 
@@ -112,11 +108,7 @@ then
 		local ingotstack2 = inv:get_stack("ingot2", 1)
 		local ingotstack3 = inv:get_stack("ingot3", 1)
 
-		local ingotstack4 = inv:get_stack("ingot4", 1)
-		local ingotstack5 = inv:get_stack("ingot5", 1)
-
-		local resstack1 = inv:get_stack("res1", 1)
-		local resstack2 = inv:get_stack("res2", 1)
+		local boxstack = inv:get_stack("boxout", 1)
 ----------------------------------------------------------------------------------
 --register nodes
 ----------------------------------------------------------------------------------
@@ -160,11 +152,55 @@ for i in ipairs (box_tab) do
 		if ingotstack1:get_name()== woolcol and
 		   ingotstack2:get_name()== watt and
 		   ingotstack3:get_name()=="default:obsidian" then
-				material = thebox
-				make_ok = "1"
+				lightbox = thebox
+				makebox_ok = "1"
+--				makecube_ok = "0"
 		end
 
 end
+
+----------------------------------------------------------------------
+
+		if makebox_ok == "1" then
+			local give = {}
+			for i = 0, anzahl-1 do
+				give[i+1]=inv:add_item("boxout",lightbox)
+			end
+			ingotstack1:take_item()
+			inv:set_stack("ingot1",1,ingotstack1)
+			ingotstack2:take_item()
+			inv:set_stack("ingot2",1,ingotstack2)
+			ingotstack3:take_item()
+			inv:set_stack("ingot3",1,ingotstack3)
+		end 
+
+
+end
+if fields["makecube"] 
+then
+
+
+
+	if fields["makecube"] then
+		makebox_ok = "0"
+		makecube_ok = "0"
+		lbanzahl = "1"
+		if inv:is_empty("ingot4") or
+		   inv:is_empty("ingot5") then
+			return
+		end
+	end
+
+
+
+		local ingotstack4 = inv:get_stack("ingot4", 1)
+		local ingotstack5 = inv:get_stack("ingot5", 1)
+
+		local cubestack = inv:get_stack("cubeout", 1)
+----------------------------------------------------------------------------------
+--register nodes
+----------------------------------------------------------------------------------
+
 local cube_tab = {
 		{"wool:white" , "mylights:lightbulb30" , "mylights:light_cube_30__white"},
 		{"wool:white" , "mylights:lightbulb60" , "mylights:light_cube_60__white"},
@@ -204,30 +240,18 @@ for i in ipairs (cube_tab) do
 
 		if ingotstack4:get_name()== woolcol and
 		   ingotstack5:get_name()== watt then
-				material = thecube
-				make_ok = "2"
+				cubelight = thecube
+--				makebox_ok = "0"
+				makecube_ok = "1"
 		end
 
 end
 ----------------------------------------------------------------------
 
-		if make_ok == "1" then
-			local give = {}
-			for i = 0, anzahl-1 do
-				give[i+1]=inv:add_item("res1",material)
-			end
-			ingotstack1:take_item()
-			inv:set_stack("ingot1",1,ingotstack1)
-			ingotstack2:take_item()
-			inv:set_stack("ingot2",1,ingotstack2)
-			ingotstack3:take_item()
-			inv:set_stack("ingot3",1,ingotstack3)
-		end 
-
-		if make_ok == "2" then
-			local give = {}
+		if makecube_ok == "1" then
+			local givea = {}
 			for j = 0, lbanzahl-1 do
-				give[j+1]=inv:add_item("res2",material)
+				givea[j+1]=inv:add_item("cubeout",cubelight)
 			end
 			ingotstack4:take_item()
 			inv:set_stack("ingot4",1,ingotstack4)

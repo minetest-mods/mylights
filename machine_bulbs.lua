@@ -1,5 +1,6 @@
 local material = {}
 local make_ok = {}
+local make_ok2 = {}
 local anzahl = {}
 local lbanzahl = {}
 minetest.register_node("mylights:machine", {
@@ -78,7 +79,7 @@ on_receive_fields = function(pos, formname, fields, sender)
 	local meta = minetest.env:get_meta(pos)
 	local inv = meta:get_inventory()
 
-if fields["make"] or fields["make2"] 
+if fields["make"]
 then
 
 	if fields["make"] then
@@ -90,14 +91,6 @@ then
 	end
 
 
-	if fields["make2"] then
-		make_ok = "0"
-		lbanzahl = "1"
-		if inv:is_empty("tabl1") or
-		   inv:is_empty("tabl2") then
-			return
-		end
-	end
 
 
 
@@ -105,11 +98,7 @@ then
 		local ingotstack2 = inv:get_stack("ingot2", 1)
 		local ingotstack3 = inv:get_stack("ingot3", 1)
 
-		local tablstack1 = inv:get_stack("tabl1", 1)
-		local tablstack2 = inv:get_stack("tabl2", 1)
-
 		local resstack1 = inv:get_stack("res1", 1)
-		local resstack2 = inv:get_stack("res2", 1)
 ----------------------------------------------------------------------------------
 --register nodes
 ----------------------------------------------------------------------------------
@@ -118,38 +107,9 @@ then
 		   ingotstack3:get_name()=="default:copper_lump" then
 				material = "mylights:lightbulb30"
 				make_ok = "1"
+				make_ok2 = "0"
 		end
 
-		if tablstack1:get_name()=="mylights:lightbulb30" and
-		   tablstack2:get_name()=="mylights:lightbulb30" then
-				material = "mylights:lightbulb60"
-				make_ok = "2"
-		end
-		if tablstack1:get_name()=="mylights:lightbulb30" and
-		   tablstack2:get_name()=="mylights:lightbulb60" then
-				material = "mylights:lightbulb90"
-				make_ok = "2"
-		end
-		if tablstack1:get_name()=="mylights:lightbulb30" and
-		   tablstack2:get_name()=="mylights:lightbulb90" then
-				material = "mylights:lightbulb120"
-				make_ok = "2"
-		end
-		if tablstack1:get_name()=="mylights:lightbulb60" and
-		   tablstack2:get_name()=="mylights:lightbulb30" then
-				material = "mylights:lightbulb90"
-				make_ok = "2"
-		end
-		if tablstack1:get_name()=="mylights:lightbulb60" and
-		   tablstack2:get_name()=="mylights:lightbulb60"then
-				material = "mylights:lightbulb120"
-				make_ok = "2"
-		end
-		if tablstack1:get_name()=="mylights:lightbulb90" and
-		   tablstack2:get_name()=="mylights:lightbulb30" then
-				material = "mylights:lightbulb120"
-				make_ok = "2"
-		end
 
 ----------------------------------------------------------------------
 
@@ -165,7 +125,75 @@ then
 			ingotstack3:take_item()
 			inv:set_stack("ingot3",1,ingotstack3)
 		end 
-		if make_ok == "2" then
+         	
+end
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+if fields["make2"] 
+then
+
+
+
+	if fields["make2"] then
+		make_ok2 = "0"
+		lbanzahl = "1"
+		if inv:is_empty("tabl1") or
+		   inv:is_empty("tabl2") then
+			return
+		end
+	end
+
+
+
+
+		local tablstack1 = inv:get_stack("tabl1", 1)
+		local tablstack2 = inv:get_stack("tabl2", 1)
+
+		local resstack2 = inv:get_stack("res2", 1)
+----------------------------------------------------------------------------------
+--register nodes
+----------------------------------------------------------------------------------
+
+		if tablstack1:get_name()=="mylights:lightbulb30" and
+		   tablstack2:get_name()=="mylights:lightbulb30" then
+				material = "mylights:lightbulb60"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+		if tablstack1:get_name()=="mylights:lightbulb30" and
+		   tablstack2:get_name()=="mylights:lightbulb60" then
+				material = "mylights:lightbulb90"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+		if tablstack1:get_name()=="mylights:lightbulb30" and
+		   tablstack2:get_name()=="mylights:lightbulb90" then
+				material = "mylights:lightbulb120"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+		if tablstack1:get_name()=="mylights:lightbulb60" and
+		   tablstack2:get_name()=="mylights:lightbulb30" then
+				material = "mylights:lightbulb90"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+		if tablstack1:get_name()=="mylights:lightbulb60" and
+		   tablstack2:get_name()=="mylights:lightbulb60"then
+				material = "mylights:lightbulb120"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+		if tablstack1:get_name()=="mylights:lightbulb90" and
+		   tablstack2:get_name()=="mylights:lightbulb30" then
+				material = "mylights:lightbulb120"
+				make_ok = "0"
+				make_ok2 = "2"
+		end
+
+----------------------------------------------------------------------
+
+		if make_ok2 == "2" then
 			local givea = {}
 			for j = 0, lbanzahl-1 do
 				givea[j+1]=inv:add_item("res2",material)

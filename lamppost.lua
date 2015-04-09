@@ -80,11 +80,11 @@ minetest.register_node("mylights:lpost_top", {
 
 -- after dig this removes the node above and below
 	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		local pos2 = { x = pos.x, y=pos.y + 1, z = pos.z }
+		local pos2 = { x = pos.x, y = pos.y + 1, z = pos.z }
 		if minetest.get_node(pos2).name == "mylights:lantern_p" then
 			minetest.remove_node(pos2)
 		end
-		local pos3 = { x = pos.x, y=pos.y - 1, z = pos.z }
+		local pos3 = { x = pos.x, y = pos.y - 1, z = pos.z }
 		if minetest.get_node(pos3).name == "mylights:lpost" then
 			minetest.remove_node(pos3)
 		end
@@ -137,7 +137,7 @@ minetest.register_node("mylights:lantern_p", {
 minetest.register_craft({
 		output = "mylights:lpost 1",
 		recipe = {
-			{'','mylights:lantern',''},
+			{'','mylights:lantern_120',''},
 			{'','default:fence_wood','dye:black'},
 			{'','default:fence_wood','dye:black'}
 			}
