@@ -45,9 +45,23 @@ minetest.register_node("mylights:machine", {
 can_dig = function(pos,player)
 	local meta = minetest.env:get_meta(pos);
 	local inv = meta:get_inventory()
-	if not inv:is_empty("ingot") then
+	if not inv:is_empty("ingot1") then
 		return false
-	elseif not inv:is_empty("res") then
+	elseif not inv:is_empty("ingot2") then
+		return false
+	elseif not inv:is_empty("ingot3") then
+		return false
+	elseif not inv:is_empty("tabl1") then
+		return false
+	elseif not inv:is_empty("tabl2") then
+		return false
+	elseif not inv:is_empty("tabl3") then
+		return false
+	elseif not inv:is_empty("tabl4") then
+		return false
+	elseif not inv:is_empty("res1") then
+		return false
+	elseif not inv:is_empty("res2") then
 		return false
 	end
 	return true

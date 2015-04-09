@@ -48,9 +48,19 @@ minetest.register_node("mylights:machine_cubes", {
 can_dig = function(pos,player)
 	local meta = minetest.env:get_meta(pos);
 	local inv = meta:get_inventory()
-	if not inv:is_empty("ingot") then
+	if not inv:is_empty("ingot1") then
 		return false
-	elseif not inv:is_empty("res") then
+	elseif not inv:is_empty("ingot2") then
+		return false
+	elseif not inv:is_empty("ingot3") then
+		return false
+	elseif not inv:is_empty("ingot4") then
+		return false
+	elseif not inv:is_empty("ingot5") then
+		return false
+	elseif not inv:is_empty("boxout") then
+		return false
+	elseif not inv:is_empty("cubeout") then
 		return false
 	end
 	return true
