@@ -7,14 +7,7 @@ local lbanzahl = {}
 minetest.register_node("mylights:machine_cubes", {
 	description = "Light Box and Cube Machine",
 	tiles = {
-		"mylights_cube_orange.png",
-		"mylights_cube_orange.png",
-
-		"mylights_cube_orange.png",
-		"mylights_cube_orange.png",
-
-		"mylights_cube_orange.png",
-		"mylights_cube_orange.png",
+		"mylights_mach_2.png",
 		},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -24,9 +17,23 @@ minetest.register_node("mylights:machine_cubes", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.3125, -0.5, -0.3125, 0.3125, -0.375, 0.3125}, 
-			{-0.125, -0.5, -0.125, 0.125, -0.0625, 0.125}, 
-			{-0.3125, -0.0625, -0.3125, 0.3125, 0.5, 0.3125}, 
+			{-0.5, -0.5, -0.5, -0.375, 0.5, -0.375}, 
+			{-0.5, -0.5, 0.375, -0.375, 0.5, 0.5}, 
+			{0.375, -0.5, 0.375, 0.5, 0.5, 0.5}, 
+			{0.375, -0.5, -0.5, 0.5, 0.5, -0.375}, 
+			{-0.5, -0.5, -0.5, 0.5, -0.375, -0.375}, 
+			{-0.5, 0.375, 0.375, 0.5, 0.5, 0.5}, 
+			{-0.5, 0.375, -0.5, -0.375, 0.5, 0.5}, 
+			{-0.5, -0.5, -0.5, -0.375, -0.375, 0.5}, 
+			{-0.5, -0.5, 0.375, 0.5, -0.375, 0.5}, 
+			{0.375, -0.5, -0.5, 0.5, -0.375, 0.5}, 
+			{0.375, 0.375, -0.5, 0.5, 0.5, 0.5}, 
+			{-0.5, 0.375, -0.5, 0.5, 0.5, -0.375}, 
+			{-0.375, -0.375, -0.375, 0.375, 0.375, 0.375}, 
+
+--			{-0.3125, -0.5, -0.3125, 0.3125, -0.375, 0.3125}, 
+--			{-0.125, -0.5, -0.125, 0.125, -0.0625, 0.125}, 
+--			{-0.3125, -0.0625, -0.3125, 0.3125, 0.5, 0.3125}, 
 
 		}
 	},
@@ -52,8 +59,9 @@ end,
 on_construct = function(pos)
 	local meta = minetest.env:get_meta(pos)
 	meta:set_string("formspec", "invsize[9,10;]"..
-		"background[-0.15,-0.25;9.40,10.75;mylights_background.png]"..
+		"background[-0.15,-0.25;9.40,10.75;mylights_background2.png]"..
 		"label[0,0;Light Box and Cubes:]"..
+		"label[0.5,0.5;Wool colors supported - White, Green, Red, Blue, Orange, Yellow]"..
 		"label[3,1;Wool]"..
 		"list[current_name;ingot1;2,1;1,1;]"..
 		"label[3,2;Light Bulb]"..

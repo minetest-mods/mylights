@@ -10,7 +10,7 @@ for i in ipairs(ceiling_lights) do
 	local item = ceiling_lights[i][3]
 
 minetest.register_node("mylights:ceiling_light_30_"..color, {
-	description = desc.."Ceiling light",
+	description = desc.."Ceiling Light 30w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -35,7 +35,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_60_"..color, {
-	description = desc.."Ceiling light",
+	description = desc.."Ceiling Light 60w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -60,7 +60,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_90_"..color, {
-	description = desc.."Ceiling light",
+	description = desc.."Ceiling Light 90w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -85,7 +85,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_120_"..color, {
-	description = desc.."Ceiling light",
+	description = desc.."Ceiling Light 120w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -112,7 +112,7 @@ minetest.register_craft({
 
 -----------------------------------------------------------------------------------
 minetest.register_node("mylights:ceiling_light_lg_30_"..color, {
-	description = desc.."Larger Ceiling light",
+	description = desc.."Larger Ceiling Light 30w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -141,7 +141,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_lg_60_"..color, {
-	description = desc.."Larger Ceiling light",
+	description = desc.."Larger Ceiling Light 60w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -170,7 +170,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_lg_90_"..color, {
-	description = desc.."Larger Ceiling light",
+	description = desc.."Larger Ceiling Light 90w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -199,7 +199,7 @@ minetest.register_craft({
 			}
 })
 minetest.register_node("mylights:ceiling_light_lg_120_"..color, {
-	description = desc.."Larger Ceiling light",
+	description = desc.."Larger Ceiling Light 120w",
 	tiles = {"mylights_ceiling_"..color..".png"},
 	drawtype = "nodebox",
 	paramtype = "light",

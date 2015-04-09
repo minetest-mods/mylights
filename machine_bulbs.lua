@@ -6,22 +6,33 @@ local lbanzahl = {}
 minetest.register_node("mylights:machine", {
 	description = "Light Bulb Machine",
 	tiles = {
-		"mylights_lightbox1_green.png^mylights_lightbulb.png",
-		"mylights_lightbox1_green.png",
-		"mylights_lightbox1_green.png",
-		"mylights_lightbox1_green.png",
-		"mylights_lightbox1_green.png",
-		"mylights_lightbox1_green.png",
+		{name="mylights_mach_tb.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		{name="mylights_mach_tb.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		{name="mylights_mach_side.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		{name="mylights_mach_side.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		{name="mylights_mach_side.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
+		{name="mylights_mach_side.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=2}},
 		},
 	drawtype = "nodebox",
 	paramtype = "light",
 	paramtype2 = "facedir",
-	light_source = 11,
+	light_source = 8,
 	groups = {cracky=2},
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.0625, 0.5}, 
+			{-0.125, 0.125, -0.125, 0.125, 0.5, 0.125}, -- NodeBox1
+			{-0.1875, 0.25, -0.125, 0.1875, 0.4375, 0.125}, -- NodeBox2
+			{-0.125, 0.25, -0.1875, 0.125, 0.4375, 0.1875}, -- NodeBox3
+			{-0.0625, 0, -0.0625, 0.0625, 0.1875, 0.0625}, -- NodeBox5
+			{-0.375, -0.5, -0.375, 0.375, 0, 0.375}, -- NodeBox6
+--			{-0.5, -0.5, -0.5, 0.5, 0.0625, 0.5}, 
 		}
 	},
 
