@@ -235,12 +235,12 @@ then
 ----------------------------------------------------------------------------------
 
 local cube_tab = {
-		{"wool:white" , "mylights:lightbulb30" , "mylights:light_cube_30__white"},
-		{"wool:white" , "mylights:lightbulb60" , "mylights:light_cube_60__white"},
-		{"wool:white" , "mylights:lightbulb90" , "mylights:light_cube_90__white"},
-		{"wool:white" , "mylights:lightbulb120" , "mylights:light_cube_120__white"},
+		{"wool:white" , "mylights:lightbulb30" , "mylights:light_cube_30_white"},
+		{"wool:white" , "mylights:lightbulb60" , "mylights:light_cube_60_white"},
+		{"wool:white" , "mylights:lightbulb90" , "mylights:light_cube_90_white"},
+		{"wool:white" , "mylights:lightbulb120" , "mylights:light_cube_120_white"},
 
-		{"wool:green" , "mylights:lightbulb30" , "mylights:light_cube_30__green"},
+		{"wool:green" , "mylights:lightbulb30" , "mylights:light_cube_30_green"},
 		{"wool:green" , "mylights:lightbulb60" , "mylights:light_cube_60_green"},
 		{"wool:green" , "mylights:lightbulb90" , "mylights:light_cube_90_green"},
 		{"wool:green" , "mylights:lightbulb120" , "mylights:light_cube_120_green"},
