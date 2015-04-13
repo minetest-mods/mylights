@@ -7,7 +7,18 @@ local lbanzahl = {}
 minetest.register_node("mylights:machine_cubes", {
 	description = "Light Box and Cube Machine",
 	tiles = {
-		"mylights_mach_2.png",
+		{name="mylights_cmach_t.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
+		{name="mylights_cmach_b.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
+		{name="mylights_cmach_s.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
+		{name="mylights_cmach_s.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
+		{name="mylights_cmach_s.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
+		{name="mylights_cmach_s.png", animation={type="vertical_frames",
+		aspect_w=16, aspect_h=16, length=4}},
 		},
 	drawtype = "nodebox",
 	paramtype = "light",
@@ -17,24 +28,28 @@ minetest.register_node("mylights:machine_cubes", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.5, -0.5, -0.5, -0.375, 0.5, -0.375}, 
-			{-0.5, -0.5, 0.375, -0.375, 0.5, 0.5}, 
-			{0.375, -0.5, 0.375, 0.5, 0.5, 0.5}, 
-			{0.375, -0.5, -0.5, 0.5, 0.5, -0.375}, 
-			{-0.5, -0.5, -0.5, 0.5, -0.375, -0.375}, 
-			{-0.5, 0.375, 0.375, 0.5, 0.5, 0.5}, 
-			{-0.5, 0.375, -0.5, -0.375, 0.5, 0.5}, 
-			{-0.5, -0.5, -0.5, -0.375, -0.375, 0.5}, 
-			{-0.5, -0.5, 0.375, 0.5, -0.375, 0.5}, 
-			{0.375, -0.5, -0.5, 0.5, -0.375, 0.5}, 
-			{0.375, 0.375, -0.5, 0.5, 0.5, 0.5}, 
-			{-0.5, 0.375, -0.5, 0.5, 0.5, -0.375}, 
-			{-0.375, -0.375, -0.375, 0.375, 0.375, 0.375}, 
+			{-0.375, -0.3125, -0.375, 0.375, 0.125, 0.375}, -- NodeBox1
+			{0.1875, -0.5, -0.375, 0.375, -0.25, -0.1875}, -- NodeBox2
+			{-0.375, -0.5, 0.1875, -0.1875, -0.3125, 0.375}, -- NodeBox3
+			{0.1875, -0.5, 0.1875, 0.375, -0.3125, 0.375}, -- NodeBox4
+			{-0.375, -0.5, -0.375, -0.1875, -0.3125, -0.1875}, -- NodeBox5
+			{-0.125, 0.1875, -0.125, 0.125, 0.4375, 0.125}, -- NodeBox6
+			{-0.1875, 0.0625, -0.1875, 0.1875, 0.1875, 0.1875}, -- NodeBox7
+			{0.125, 0.1875, -0.1875, 0.1875, 0.4375, -0.125}, -- NodeBox8
+			{-0.1875, 0.1875, -0.1875, -0.125, 0.4375, -0.125}, -- NodeBox9
+			{-0.1875, 0.1875, 0.125, -0.125, 0.4375, 0.1875}, -- NodeBox10
+			{0.125, 0.1875, 0.125, 0.1875, 0.4375, 0.1875}, -- NodeBox11
+			{-0.1875, 0.4375, -0.1875, 0.1875, 0.5, -0.125}, -- NodeBox12
+			{0.125, 0.4375, -0.1875, 0.1875, 0.5, 0.1875}, -- NodeBox13
+			{-0.1875, 0.4375, -0.1875, -0.125, 0.5, 0.1875}, -- NodeBox14
+			{-0.1875, 0.4375, 0.125, 0.1875, 0.5, 0.1875}, -- NodeBox15 
 
---			{-0.3125, -0.5, -0.3125, 0.3125, -0.375, 0.3125}, 
---			{-0.125, -0.5, -0.125, 0.125, -0.0625, 0.125}, 
---			{-0.3125, -0.0625, -0.3125, 0.3125, 0.5, 0.3125}, 
-
+		}
+	},
+	selection_box = {
+		type = "fixed",
+		fixed = {
+			{-0.375, -0.5, -0.375, 0.375, 0.125, 0.375}, 
 		}
 	},
 
