@@ -300,11 +300,11 @@ end
 --Craft
 
 minetest.register_craft({
-		output = 'mylights:machine',
+		output = 'mylights:machine_cubes',
 		recipe = {
-			{'default:glass', 'default:copper_ingot', 'default:glass'},
-			{'default:glass', 'default:torch', 'default:glass'},
-			{'default:glass', "default:glass", 'default:glass'},		
+			{'default:glass', 'wool:red', 'default:glass'},
+			{'wool:blue', 'default:torch', 'wool:yellow'},
+			{'default:glass', "wool:green", 'default:glass'},		
 		},
 })
 
