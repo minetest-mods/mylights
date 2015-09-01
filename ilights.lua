@@ -45,7 +45,7 @@ minetest.override_item("ilights:light_"..name, {
 			"ilights_lamp_lens.png^[colorize:"..colordef.."20:75"
 		},
 		use_texture_alpha = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 	    paramtype = "light",
 	    paramtype2 = "facedir",
 	    light_source = "5",
@@ -73,7 +73,7 @@ minetest.register_craft({
 			"ilights_lamp_lens.png^[colorize:"..colordef.."20:75"
 		},
 		use_texture_alpha = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 	    paramtype = "light",
 	    paramtype2 = "facedir",
 	    light_source = "8",
@@ -101,7 +101,7 @@ minetest.register_craft({
 			"ilights_lamp_lens.png^[colorize:"..colordef.."20:75"
 		},
 		use_texture_alpha = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 	    paramtype = "light",
 	    paramtype2 = "facedir",
 	    light_source = "11",
@@ -129,7 +129,7 @@ minetest.register_craft({
 			"ilights_lamp_lens.png^[colorize:"..colordef.."20:75"
 		},
 		use_texture_alpha = true,
-		groups = {cracky=3},
+		groups = {cracky=3, not_in_creative_inventory=1},
 	    paramtype = "light",
 	    paramtype2 = "facedir",
 	    light_source = "14",
