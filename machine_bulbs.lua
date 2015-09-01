@@ -119,7 +119,9 @@ then
 	if fields["make"] then
 		make_ok = "0"
 		anzahl = "1"
-		if inv:is_empty("ingot1") then
+		if inv:is_empty("ingot1") or
+		   inv:is_empty("ingot2") or
+		   inv:is_empty("ingot3") then
 			return
 		end
 	end
