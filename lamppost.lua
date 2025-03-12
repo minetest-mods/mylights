@@ -47,7 +47,7 @@ minetest.register_node("mylights:lamppost", {
         local pos = pointed_thing.above
         if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name ~= "air" and
            minetest.get_node({x=pos.x, y=pos.y+2, z=pos.z}).name ~= "air" then
-            minetest.chat_send_player( placer:get_player_name(), "Not enough vertical space to place a server!" )
+            minetest.chat_send_player( placer:get_player_name(), "Not enough vertical space to place a lamp post!" )
             return
         end
         return minetest.item_place(itemstack, placer, pointed_thing)
