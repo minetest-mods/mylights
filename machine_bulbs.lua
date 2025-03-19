@@ -1,8 +1,10 @@
 local material = {}
-local make_ok = {}
+local make_ok = false
 local make_ok2 = {}
 local anzahl = {}
 local lbanzahl = {}
+
+--Light Bulb Machine
 minetest.register_node("mylights:machine", {
 	description = "Light Bulb Machine",
 	tiles = {
@@ -27,15 +29,15 @@ minetest.register_node("mylights:machine", {
 	node_box = {
 		type = "fixed",
 		fixed = {
-			{-0.375, -0.3125, -0.375, 0.375, 0.125, 0.375}, -- NodeBox1
-			{0.1875, -0.5, -0.375, 0.375, -0.25, -0.1875}, -- NodeBox2
-			{-0.375, -0.5, 0.1875, -0.1875, -0.3125, 0.375}, -- NodeBox3
-			{0.1875, -0.5, 0.1875, 0.375, -0.3125, 0.375}, -- NodeBox4
-			{-0.375, -0.5, -0.375, -0.1875, -0.3125, -0.1875}, -- NodeBox5
-			{-0.125, 0.125, -0.125, 0.125, 0.4375, 0.125}, -- NodeBox6
-			{-0.0625, 0.375, -0.0625, 0.0625, 0.5, 0.0625}, -- NodeBox16
-			{-0.1875, 0.125, -0.0625, 0.1875, 0.375, 0.0625}, -- NodeBox17
-			{-0.0625, 0.125, -0.1875, 0.0625, 0.375, 0.1875}, -- NodeBox18
+			{-0.375, -0.3125, -0.375, 0.375, 0.125, 0.375},
+			{0.1875, -0.5, -0.375, 0.375, -0.25, -0.1875},
+			{-0.375, -0.5, 0.1875, -0.1875, -0.3125, 0.375},
+			{0.1875, -0.5, 0.1875, 0.375, -0.3125, 0.375},
+			{-0.375, -0.5, -0.375, -0.1875, -0.3125, -0.1875},
+			{-0.125, 0.125, -0.125, 0.125, 0.4375, 0.125},
+			{-0.0625, 0.375, -0.0625, 0.0625, 0.5, 0.0625},
+			{-0.1875, 0.125, -0.0625, 0.1875, 0.375, 0.0625},
+			{-0.0625, 0.125, -0.1875, 0.0625, 0.375, 0.1875},
 		}
 	},
 	selection_box = {
@@ -46,34 +48,26 @@ minetest.register_node("mylights:machine", {
 	},
 
 	after_place_node = function(pos, placer)
-	local meta = minetest.get_meta(pos);
+		local meta = minetest.get_meta(pos);
 			meta:set_string("owner",  (placer:get_player_name() or ""));
 			meta:set_string("infotext",  "Light Bulb Machine (owned by " .. (placer:get_player_name() or "") .. ")");
 		end,
 
-can_dig = function(pos,player)
+can_dig = function(pos,player,name)
 	local meta = minetest.get_meta(pos);
 	local inv = meta:get_inventory()
-	if not inv:is_empty("ingot1") then
-		return false
-	elseif not inv:is_empty("ingot2") then
-		return false
-	elseif not inv:is_empty("ingot3") then
-		return false
-	elseif not inv:is_empty("tabl1") then
-		return false
-	elseif not inv:is_empty("tabl2") then
-		return false
-	elseif not inv:is_empty("tabl3") then
-		return false
-	elseif not inv:is_empty("tabl4") then
-		return false
-	elseif not inv:is_empty("res1") then
-		return false
-	elseif not inv:is_empty("res2") then
+	if not inv:is_empty("ingot1") or
+		not inv:is_empty("ingot2") or
+		not inv:is_empty("ingot3") or
+		not inv:is_empty("tabl1") or
+		not inv:is_empty("tabl2") or
+		not inv:is_empty("tabl3") or
+		not inv:is_empty("tabl4") or
+		not inv:is_empty("res1") or
+		not inv:is_empty("res2") then
+			minetest.chat_send_player(""..player:get_player_name(), "The Machine Is Not Empty")
 		return false
 	end
-	return true
 end,
 
 on_construct = function(pos)
@@ -117,7 +111,7 @@ if fields["make"]
 then
 
 	if fields["make"] then
-		make_ok = "0"
+		make_ok = false
 		anzahl = "1"
 		if inv:is_empty("ingot1") or
 		   inv:is_empty("ingot2") or
@@ -142,14 +136,14 @@ then
 		   ingotstack2:get_name()=="default:torch" and
 		   ingotstack3:get_name()=="default:copper_lump" then
 				material = "mylights:lightbulb30"
-				make_ok = "1"
+				make_ok = true
 				make_ok2 = "0"
 		end
 
 
 ----------------------------------------------------------------------
 
-		if make_ok == "1" then
+		if make_ok == true then
 			local give = {}
 			for i = 0, anzahl-1 do
 				give[i+1]=inv:add_item("res1",material)
@@ -193,37 +187,37 @@ then
 		if tablstack1:get_name()=="mylights:lightbulb30" and
 		   tablstack2:get_name()=="mylights:lightbulb30" then
 				material = "mylights:lightbulb60"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 		if tablstack1:get_name()=="mylights:lightbulb30" and
 		   tablstack2:get_name()=="mylights:lightbulb60" then
 				material = "mylights:lightbulb90"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 		if tablstack1:get_name()=="mylights:lightbulb30" and
 		   tablstack2:get_name()=="mylights:lightbulb90" then
 				material = "mylights:lightbulb120"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 		if tablstack1:get_name()=="mylights:lightbulb60" and
 		   tablstack2:get_name()=="mylights:lightbulb30" then
 				material = "mylights:lightbulb90"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 		if tablstack1:get_name()=="mylights:lightbulb60" and
 		   tablstack2:get_name()=="mylights:lightbulb60"then
 				material = "mylights:lightbulb120"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 		if tablstack1:get_name()=="mylights:lightbulb90" and
 		   tablstack2:get_name()=="mylights:lightbulb30" then
 				material = "mylights:lightbulb120"
-				make_ok = "0"
+				make_ok = false
 				make_ok2 = "2"
 		end
 
@@ -255,15 +249,3 @@ minetest.register_craft({
 			{'default:glass', "default:glass", 'default:glass'},		
 		},
 })
-
-
-
-
-
-
-
-
-
-
-
-
