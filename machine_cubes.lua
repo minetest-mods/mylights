@@ -24,7 +24,7 @@ minetest.register_node("mylights:machine_cubes", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 11,
-	groups = {cracky=2},
+	groups = {oddly_breakable_by_hand=1,dig_immediate=1},
 	node_box = {
 		type = "fixed",
 		fixed = {

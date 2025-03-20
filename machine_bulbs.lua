@@ -25,7 +25,7 @@ minetest.register_node("mylights:machine", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 8,
-	groups = {cracky=2},
+	groups = {oddly_breakable_by_hand=1,dig_immediate=1},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -53,21 +53,22 @@ minetest.register_node("mylights:machine", {
 			meta:set_string("infotext",  "Light Bulb Machine (owned by " .. (placer:get_player_name() or "") .. ")");
 		end,
 
-can_dig = function(pos,player,name)
+
+can_dig = function(pos,player)
 	local meta = minetest.get_meta(pos);
 	local inv = meta:get_inventory()
 	if not inv:is_empty("ingot1") or
-		not inv:is_empty("ingot2") or
-		not inv:is_empty("ingot3") or
-		not inv:is_empty("tabl1") or
-		not inv:is_empty("tabl2") or
-		not inv:is_empty("tabl3") or
-		not inv:is_empty("tabl4") or
-		not inv:is_empty("res1") or
-		not inv:is_empty("res2") then
-			minetest.chat_send_player(""..player:get_player_name(), "The Machine Is Not Empty")
+	not inv:is_empty("ingot2") or
+	not inv:is_empty("ingot3") or
+	not inv:is_empty("tabl1") or
+	not inv:is_empty("tabl2") or
+	not inv:is_empty("tabl3") or
+	not inv:is_empty("tabl4") or
+	not inv:is_empty("res1") or
+	not inv:is_empty("res2") then
 		return false
 	end
+	return true
 end,
 
 on_construct = function(pos)
@@ -75,16 +76,20 @@ on_construct = function(pos)
 	meta:set_string("formspec", "invsize[9,10;]"..
 		"background[-0.15,-0.25;9.40,10.75;mylights_background.png]"..
 		"label[0,0;Light Bulbs:]"..
-		"label[3,1;Glass]"..
+		"label[3,1.5;Glass]"..
 		"list[current_name;ingot1;2,1;1,1;]"..
-		"label[3,2;Torch]"..
+		"label[3,2.5;Torch]"..
 		"list[current_name;ingot2;2,2;1,1;]"..
-		"label[3,3;Copper Lump]"..
+		"label[3,3.5;Copper Lump]"..
 		"list[current_name;ingot3;2,3;1,1;]"..
 		"list[current_name;res1;2,4.5;1,1;]"..
 		"button[1,4.5;1,1;make;Make]"..
 
+		"label[5.5,1;Combine lightbulbs to]"..
+		"label[5.5,1.5;get more powerfull bulbs]"..
+		"label[7,2.5;Lightbulb]"..
 		"list[current_name;tabl1;6,2;1,1;]"..
+		"label[7,3.5;Lightbulb]"..
 		"list[current_name;tabl2;6,3;1,1;]"..
 		"list[current_name;res2;6,4.5;1,1;]"..
 		"button[5,4.5;1,1;make2;Make]"..
