@@ -16,7 +16,7 @@ minetest.register_node("mylights:ceiling_light_30_"..color, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -118,7 +118,7 @@ minetest.register_node("mylights:ceiling_light_lg_30_"..color, {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -238,7 +238,7 @@ minetest.register_node("mylights:ceiling_light_round_30", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -355,7 +355,7 @@ minetest.register_node("mylights:ceiling_light_fluorescent_30", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -478,7 +478,7 @@ minetest.register_node("mylights:ceiling_light_hanging_30", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
@@ -612,7 +612,7 @@ minetest.register_node("mylights:ceiling_light_cube_30", {
 	paramtype = "light",
 	paramtype2 = "facedir",
 	light_source = 5,
-	groups = {snappy = 1},
+	groups = {snappy = 1, not_in_creative_inventory=0},
 	node_box = {
 		type = "fixed",
 		fixed = {
